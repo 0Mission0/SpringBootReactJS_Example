@@ -1,5 +1,6 @@
 package idv.mission.example.SpringBootReactJS_Example;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,13 @@ public class WelcomeController {
 	@RequestMapping("/hello/{name}")
 	public @ResponseBody String hello(@PathVariable String name) {
 		return "Hello, " + name;
+	}
+	
+	@RequestMapping(value = "/json", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody Map<String, String> json() {
+		Map<String, String> result = new HashMap<String, String>();
+		result.put("key", "value");
+		return result;
 	}
 	
 	@RequestMapping(value="/post", method=RequestMethod.POST)
